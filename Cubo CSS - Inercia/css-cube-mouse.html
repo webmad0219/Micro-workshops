@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Pure CSS 3D cube</title>
+    
+    <style>
+
+      body {
+        background: black;
+      }
+
+      .cube-wrap {
+        position: absolute;
+        top: calc(50% - 150px);
+        left: calc(50% - 150px);
+        width: 300px;
+        height: 300px;
+        transform-style: preserve-3d;
+      }
+
+      .layer {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        border: 2px solid white;
+      }
+
+      .layer.face {
+        transform: translateZ(150px);
+        transform-style: preserve-3d;
+      }
+
+      .layer.back {
+        transform: translateZ(-150px);
+        transform-style: preserve-3d;
+      }
+
+      .layer.left {
+        transform: rotateY(-90deg) translateZ(150px);
+        transform-style: preserve-3d;
+      }
+
+      .layer.right {
+        transform: rotateY(90deg) translateZ(150px);
+        transform-style: preserve-3d;
+      }
+
+      .layer.top {
+        transform: rotateX(90deg) translateZ(150px);
+        transform-style: preserve-3d;
+      }
+
+      .layer.bottom {
+        transform: rotateX(-90deg) translateZ(150px);
+        transform-style: preserve-3d;
+      }
+
+  
+    </style>
+
+  </head>
+  <body>
+
+    <div class="cube-wrap">
+        <div class="layer face"></div>
+        <div class="layer back"></div>
+        <div class="layer left"></div>
+        <div class="layer right"></div>
+        <div class="layer top"></div>
+        <div class="layer bottom"></div>
+    </div>
+
+
+    <script type="text/javascript">
+
+      var cube;
+
+      window.onmousemove = function(e){
+
+        cube = document.querySelector('.cube-wrap')
+
+        cube.style.transform = 'rotateX('+ e.pageX * .2 +'deg) rotateY('+ e.pageY * .2  +'deg) rotateZ('+ e.pageX * .2  +'deg)'
+      }
+     
+
+    </script>
+
+  </body>
+</html>

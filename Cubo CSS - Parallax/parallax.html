@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <title>PARALLAX 1</title>
+    <style>
+
+      body {
+        width: 100%;
+        height: 300vh;
+        background: black;
+      }
+
+      #scene {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+      }
+
+      .cube-wrap {
+        position: absolute;
+        top: calc(50% - 150px);
+        left: calc(50% - 150px);
+        width: 300px;
+        height: 300px;
+        perspective: 99999px;
+        transform-style: preserve-3d;
+        will-change: transform;
+      }
+
+      .layer {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        border-radius: 1px;
+        box-shadow: inset 0 0 0 1px #fff, 0 0 0 1px #fff;
+      }
+
+      .layer.face {
+        transform: translate3d(0px, 0px, 150px);
+        transform-style: preserve-3d;
+      }
+
+      .layer.back {
+        transform: translate3d(0px, 0px, -150px);
+        transform-style: preserve-3d;
+      }
+
+      .layer.left {
+        transform: rotateY(-90deg) translate3d(0px, 0px, 150px);
+        transform-style: preserve-3d;
+      }
+
+      .layer.right {
+        transform: rotateY(90deg) translate3d(0px, 0px, 150px);
+        transform-style: preserve-3d;
+      }
+
+      .layer.top {
+        transform: rotateX(90deg) translate3d(0px, 0px, 150px);
+        transform-style: preserve-3d;
+      }
+
+      .layer.bottom {
+        transform: rotateX(-90deg) translate3d(0px, 0px, 150px);
+        transform-style: preserve-3d;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <div id="scene">
+
+      <div class="cube-wrap">
+          <div class="layer face"></div>
+          <div class="layer back"></div>
+          <div class="layer left"></div>
+          <div class="layer right"></div>
+          <div class="layer top"></div>
+          <div class="layer bottom"></div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+
+      let userDepth;
+
+      window.onscroll = (e) => {
+
+        userDepth = window.scrollY * .2
+        document.querySelector('.cube-wrap').style.transform = `rotateX(${userDepth}deg) rotateY(${userDepth}deg) rotateZ(${userDepth}deg)`
+
+      }
+
+    </script>
+
+  </body>
+</html>
