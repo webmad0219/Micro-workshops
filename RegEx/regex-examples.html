@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>RegEx examples</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <p>La expresión <strong id="ex"></strong> sobre el string <strong id="str"></strong> resulta en <span
+            id="bol"></span>
+    </p>
+</body>
+
+
+<script>
+
+    const test01 = { string: '333', expression: /^\d\d\d$/ }
+    const test02 = { string: '333', expression: /^\d{3}$/ }
+    const test03 = { string: '1726AC', expression: /^\d{4}[A-Z]{2}$/ }
+    const test99 = { string: '1726aC', expression: /^\d{4}[A-Za-z]{2}$/ }
+    const test04 = { string: 'qwerty12', expression: /\d{2}/ }
+    const test05 = { string: 'qwerty12', expression: /^\d{2}$/ }
+    const test06 = { string: '22/10/2016', expression: /^\d{2}[./-]\d{2}[./-]\d{4}$/ }
+    const test07 = { string: '22-10-2016', expression: /^\d{2}[./-]\d{2}[./-]\d{4}$/ }
+    const test08 = { string: '902 20 20 20', expression: /^\d{3}\s\d{2}\s\d{2}\s\d{2}$/ }
+    const test09 = { string: '(91) 65057722', expression: /^\(\d{2,3}\)\s\d{8}$/ }
+    const test10 = { string: '+34 916505050', expression: /^\+\d{2,3}\s\d{9}$/ }
+    const test11 = { string: 'jhd6JdhnSJ', expression: /^\w+$/ }        // sólo caracteres alfanuméricos
+    const test12 = { string: '283,9', expression: /^\w+$/ }             // sólo caracteres alfanuméricos
+    const test13 = { string: 'toc@msn.es', expression: /^\S+@\S+\.\S+$/ }
+    const test14 = { string: '    ', expression: /^\s+$/ }              // sólo espacios
+    const test15 = { string: 'h&reu', expression: /^\s+$/ }             // sólo espacios
+    const test16 = { string: 'Ironhack', expression: /^ironhack$/ }
+    const test17 = { string: 'Ironhack', expression: /^ironhack$/i }
+    const test18 = { string: '0000000000A', expression: /^\d{10}[A-Z]|X\d{10}[A-Z]$/ }
+    const test19 = { string: 'X0000000000A', expression: /^\d{10}[A-Z]|X\d{10}[A-Z]$/ }
+
+
+
+    const checkExp = data => {
+        const result = data.expression.test(data.string)
+
+        ex.textContent = data.expression
+        str.textContent = data.string
+        bol.textContent = result
+    }
+
+
+    checkExp(test1) // pasa aquí cualquiera de los test superiores
+
+
+
+
+
+
+    // Bonus! Password puñetera yay! Súper! (descomenta)
+
+    /*
+    let pwd = prompt("Indica una contraseña de longitud mínima 7, con una mayúscula, una minúscula, un número y un carater especial!")
+
+    if (!/[0-9]/.test(pwd) || !/[A-Z]/.test(pwd) || !/[a-z]/.test(pwd) || !/[!$*]/.test(pwd) || pwd.length < 7) {
+        alert('La contraseña no cumple las normas. Mal joder mal.')
+    }
+    else {
+        alert('Bien.')
+    }
+    */
+
+
+
+</script>
+
+</html>
